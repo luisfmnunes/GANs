@@ -1,5 +1,9 @@
 # Generative Adiversarial Networks (GANs)
 
+<p align="center", width="100%">
+    <img width="100%" src="https://www.itrelease.com/wp-content/uploads/2020/06/Pros-and-cons-of-Generative-Adversarial-Netowrk-GAN.png">
+</p>
+
 Generative Adversarial Networks is a concept introduced by [Ian Godfellow et al.](https://arxiv.org/abs/1406.2661) in which two neural networks (NN) compete with adversarial tasks, the Discriminator and the Generator.
 
 The Discriminator must learn a descriptor of the training data and classificate it either as false or not, and the Generator that must learn a distribution probability function in order to generate data from input noise to fool the Discriminator. If the generator achieve the task of fooling the Discriminator, then it has learned a distribution that generates new data similar to the training data descriptor.
@@ -25,7 +29,9 @@ These are the following utilities packages and their function:
 
 The Notebooks directory's goal is to store the notebooks and possible data generated from them. Currently there is only the implementation of the [Vanilla GAN](./notebooks/vanilla_GAN.ipynb) and the flow description of such. It is intended to provide different implementations and further researches regarding the thema. The following result is observed from the GAN trained in the mentioned notebook.
 
-![Generator Results Along Training](./data/gifs/20220324_results.gif)
+<p align="center", width="100%">
+    <img width="100%" src="./data/gifs/20220324_results.gif">
+</p>
 
 ## Usage
 
