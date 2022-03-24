@@ -3,3 +3,6 @@ matplotlib
 torch
 torchvision
 opencv-python
+onnx
+onnxruntime
+pillow
