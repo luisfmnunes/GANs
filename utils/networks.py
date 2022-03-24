@@ -8,7 +8,7 @@ class DiscriminatorNet(nn.Module):
 
     def __init__(self):
         super().__init__()
-        n_features = 748
+        n_features = 784
         n_out = 1
 
         self.fc1 = nn.Linear(n_features, 1024)
@@ -18,6 +18,8 @@ class DiscriminatorNet(nn.Module):
 
         self.leakyReLU = nn.LeakyReLU(0.2)
         self.dropout = nn.Dropout(0.3)
+
+        self.sigmoid = nn.Sigmoid()
 
     def forward(self, x):
         
@@ -37,7 +39,7 @@ class DiscriminatorNet(nn.Module):
         x = self.dropout(x)
 
         # Output Layer
-        x = F.sigmoid(self.fc4(x))
+        x = self.sigmoid(self.fc4(x))
 
         return x
 
@@ -58,6 +60,8 @@ class GeneratorNet(nn.Module):
 
         self.leakyReLU = nn.LeakyReLU(0.2)
 
+        self.tanh = nn.Tanh()
+
     def forward(self, x):
 
         # Hidden 0
@@ -73,6 +77,6 @@ class GeneratorNet(nn.Module):
         x = self.leakyReLU(x)
 
         # Output Layer
-        x = F.tanh(self.fc4(x))
+        x = self.tanh(self.fc4(x))
 
         return x

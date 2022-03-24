@@ -61,6 +61,7 @@ class Logger:
         plt.imshow(np.moveaxis(horizontal_grid.numpy(), 0, -1))
         plt.axis('off')
         if plot_horizontal:
+            display.clear_output(wait=True)
             display.display(plt.gcf())
         self._save_images(fig, epoch, n_batch, 'hori')
         plt.close()
@@ -72,7 +73,7 @@ class Logger:
         plt.close()
     
     def _save_images(self, fig, epoch, n_batch, comment=''):
-        out_dir = f'.data/images/{self.data_subdir}'
+        out_dir = f'./data/images/{self.data_subdir}'
         Logger._make_dir(out_dir)
         fig.savefig(f'{out_dir}/{comment}_epoch_{epoch}_batch_{n_batch}.png')
 
@@ -88,12 +89,15 @@ class Logger:
         print('D(x): {:.4f}, D(G(z)): {:.4f}'.format(d_pred_real.mean(), d_pred_fake.mean()))
        
     def save_models(self, generator, discriminator, epoch):
+        """
+        Saves each of the models as .pt model
+        """
         out_dir = f'./data/models/{self.data_subdir}'
         Logger._make_dir(out_dir)
         torch.save(generator.state_dict(),
-                    f'{out_dir}/G_epoch_{epoch}')
+                    f'{out_dir}/G_epoch_{epoch}.pt')
         torch.save(discriminator.state_dict(),
-                    f'{out_dir}/D_epoch_{epoch}')
+                    f'{out_dir}/D_epoch_{epoch}.pt')
 
     def close(self):
         self.writer.close()
