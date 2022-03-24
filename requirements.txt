@@ -6,3 +6,4 @@ opencv-python
 onnx
 onnxruntime
 pillow
+imageio
